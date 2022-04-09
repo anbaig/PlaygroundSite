@@ -1,0 +1,17 @@
+Creating this site                                                 (04.08.2022)
+"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-
+
+I've tried launching a personal site many times. This is my first successful 
+attempt.
+
+I spent less time on the parts that didn't excite me, and more time on the parts
+that did (What a genius). That's why this website is just some text files being 
+served from a Go web server running on AWS.
+
+I drew heavy inspiration from this post I saw on hacker 
+news: https://j3s.sh/thought/my-website-is-one-binary.html. Thanks Jes for a push
+in the right direction.
+
+"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-
+
+
