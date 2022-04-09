@@ -1,0 +1,41 @@
+Fixing my first issues                                             (04.09.2022)
+"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-
+
+After getting this site getting thrown together yesterday I was excited to show
+my girlfriend. I closed up my comptuer and headed out to the living room to 
+show her but was suprised when I was met with a "502: Bad Gateway". I was a bit
+suprised since not even two minutes ago, I was able to verify that the site was 
+working end to end. My suspicision was that I was screwing up setting up a long
+running process on a linux box. The command I was using to get a long running
+process going was `./playgroundsite </dev/null &>/dev/null &`.
+
+The next morning I did some poking around and realized that upon closing the
+terminal a HUP (Hang up) signal was being sent to the running background process
+that was killing it. I realized the errors of my ways and found out about the linux
+`nohup` command. When a command was run via nohup, it would become immune to the 
+effects of the NOHUP signal. I updated the command to run the process to the 
+following: `nohup ./playgroundsite </dev/null &>/dev/null &` and now it works as 
+expected :)
+
+I return to my girlfriend with a more reliable website and ask her to try again!
+She turns her phone to me and shows that the website is hanging and nothing is being
+displayed. She had typed into her phone's browser 'akbar.link'. Grrr. 
+
+After doing some poking with curl on my machine, I realized that typing in
+'akbar.link' without HTTPS was sending a HTTP request for the site but my load 
+balancer was only configured to pick up HTTPS traffic and forward itto my backend 
+host. A quick update of the load balancer listener rules to redirect HTTP to HTTPS 
+and a quick check with curl (with the help of the -L flag to follow redirects) I 
+was able to verify that it worked and using just `akbar.link` would return the content 
+of my site!
+
+While writing out this post I realized that there is two additional things that would
+be nice for me to build out, one would be a linter tool for these posts. When I need
+to cut some words out, it's a pain doing the restrucuting of the lines myself to get
+80 characters per line. Another thing is to have my remote machine pickup changes in
+github automatically instead of me having to ssh and setup up the new version of the 
+code myself, a cron job would do great here.
+
+"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-
+
+
